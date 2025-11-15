@@ -45,6 +45,7 @@ const experiences = [
         name: 'Python application configuration facility',
         description:
           'Developed an internal python package to unify developer experience to load application configuration from various sources, including the internal secret vault solution, reducing the code complexity of the AWS Batch jobs and AWS Lambda functions written in python.',
+        tech: ['Python'],
       },
     ],
   },
