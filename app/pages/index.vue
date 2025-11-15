@@ -217,7 +217,11 @@ const education = [
                 <div class="font-medium">{{ p.name }}</div>
                 <p class="text-gray-700 dark:text-gray-300">{{ p.description }}</p>
                 <div v-if="p.tech?.length" class="flex items-center gap-2 flex-wrap">
-                  <span v-for="tech in p.tech" :key="tech" class="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <span
+                    v-for="tech in p.tech"
+                    :key="tech"
+                    class="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+                  >
                     {{ tech }}
                   </span>
                 </div>
@@ -269,8 +273,12 @@ const education = [
     <!-- Footer -->
     <footer class="pt-8 mt-10 border-t border-gray-200 dark:border-gray-800">
       <p class="text-center text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-1">
-        Built with <a href="https://nuxt.com" class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150">Nuxt.js</a> and hosted on 
-        <img src="~/assets/svg/aws.svg" alt="AWS" class="w-5 h-5" style="filter: invert(60%);" />
+        Built with
+        <a href="https://nuxt.com" class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150"
+          >Nuxt.js</a
+        >
+        and hosted on
+        <img src="~/assets/svg/aws.svg" alt="AWS" class="w-5 h-5" style="filter: invert(60%)" />
       </p>
     </footer>
   </main>
