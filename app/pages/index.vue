@@ -277,7 +277,7 @@ const education = [
         <a href="https://nuxt.com" class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150"
           >Nuxt.js</a
         >
-        and hosted on
+        | hosted on
         <img src="~/assets/svg/aws.svg" alt="AWS" class="w-5 h-5" style="filter: invert(60%)" />
       </p>
     </footer>
