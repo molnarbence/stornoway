@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: ['main']
 
+permissions: 
+  id-token: write # REQUIRED for OIDC 
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,20 +46,19 @@ jobs:
         run: |
           cfn-lint --version
           cfn-lint -t ./aws/stornoway.yml
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: eu-central-1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::230767735088:role/cfdeploy-role
+          aws-region: eu-central-1
 
-      # - name: Deploy CloudFormation stack
-      #   run: |
-      #     aws cloudformation deploy \
-      #       --template-file ./aws/stornoway.yml \
-      #       --stack-name stornoway \
-      #       --capabilities CAPABILITY_NAMED_IAM \
-      #       --parameter-overrides DomainName=cv.molnarbence.dev
+      - name: Deploy CloudFormation stack
+        run: |
+          aws cloudformation deploy \
+            --template-file ./aws/stornoway.yml \
+            --stack-name stornoway \
+            --capabilities CAPABILITY_NAMED_IAM \
+            --parameter-overrides DomainName=cv.molnarbence.dev
 
   upload-to-s3:
     needs:
