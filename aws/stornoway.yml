@@ -171,9 +171,9 @@ Resources:
               Federated: !Sub 'arn:aws:iam::${AWS::AccountId}:oidc-provider/token.actions.githubusercontent.com'
             Condition:
               StringEquals:
-                "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+                'token.actions.githubusercontent.com:aud': 'sts.amazonaws.com'
               StringLike:
-                "token.actions.githubusercontent.com:sub": "repo:molnarbence/stornoway:*"
+                'token.actions.githubusercontent.com:sub': 'repo:molnarbence/stornoway:*'
       Policies:
         - PolicyName: 's3-read-write'
           PolicyDocument:
@@ -185,7 +185,7 @@ Resources:
                   - 's3:ListBucket'
                   - 's3:PutObject'
                   - 's3:DeleteObject'
-                Resource: 
+                Resource:
                   - !Sub 'arn:aws:s3:::${DomainName}'
                   - !Sub 'arn:aws:s3:::${DomainName}/*'
         - PolicyName: 'cloudfront-invalidate'
