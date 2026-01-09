@@ -197,3 +197,8 @@ Resources:
                   - 'cloudfront:CreateInvalidation'
                 Resource:
                   - !Sub 'arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}'
+
+Outputs:
+  StaticContentDeployRoleArn:
+    Description: 'The ARN of the role to be assumed by GitHub Actions for deploying static content'
+    Value: !GetAtt StaticContentDeployRole.Arn

@@ -36,6 +36,10 @@ jobs:
 
   infra:
     runs-on: ubuntu-latest
+
+    outputs:
+      static-content-deploy-role-arn: ${{ steps.set-output.outputs.role_arn }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -60,6 +64,10 @@ jobs:
             --capabilities CAPABILITY_NAMED_IAM \
             --parameter-overrides DomainName=cv.molnarbence.dev
 
+      - name: Set output variable
+        id: set-output
+        run: echo "role_arn=$(aws cloudformation describe-stacks --stack-name stornoway --query "Stacks[0].Outputs[?OutputKey=='StaticContentDeployRoleArn'].OutputValue" --output text)" >> $GITHUB_OUTPUT
+
   upload-to-s3:
     needs:
       - build
@@ -73,8 +81,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ needs.infra.outputs.static-content-deploy-role-arn }}
           aws-region: us-east-1
 
       - name: Deploy static site to S3 bucket
