@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // Future: replace placeholders with real content or CMS-driven data
 const name = 'Bence Molnár';
-const role = 'Senior Software Engineer';
 const location = 'London, UK';
 const email = 'hiring@molnarbence.dev';
 const github = { handle: 'molnarbence', url: 'https://github.com/molnarbence' };
@@ -12,7 +11,6 @@ const skills = ['.NET (C#)', 'Python', 'Node.js', 'Apache Spark', 'AWS', 'GitHub
 const experiences = [
   {
     company: 'Skyscanner Ltd',
-    title: 'Senior Software Engineer',
     period: '2019 — Present',
     location: 'London, UK',
     projects: [
@@ -51,7 +49,6 @@ const experiences = [
   },
   {
     company: 'Mimecast',
-    title: 'Senior Software Engineer',
     period: '2017 — 2019',
     location: 'London, UK',
     projects: [
@@ -65,7 +62,6 @@ const experiences = [
   },
   {
     company: 'Agoda',
-    title: 'Senior Software Engineer',
     period: '2014 — 2017',
     location: 'Bangkok, Thailand',
     projects: [
@@ -92,7 +88,6 @@ const experiences = [
   },
   {
     company: 'NK Services',
-    title: 'Software Engineer',
     period: '2010 — 2014',
     location: 'Budapest, Hungary',
     projects: [
@@ -120,7 +115,6 @@ const education = [
     <!-- Header -->
     <header class="text-center space-y-2">
       <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">{{ name }}</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-300">{{ role }}</p>
       <div class="text-sm text-gray-500 dark:text-gray-400 flex flex-wrap gap-x-4 gap-y-1 justify-center">
         <span class="inline-flex items-center gap-1">
           <svg
@@ -208,7 +202,6 @@ const education = [
           <div class="space-y-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
               <div class="font-medium">
-                {{ exp.title }} —
                 <span class="text-gray-700 dark:text-gray-200">{{ exp.company }}</span>
                 <span class="text-gray-500 dark:text-gray-400"> · {{ exp.location }}</span>
               </div>
